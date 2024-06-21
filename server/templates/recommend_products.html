@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendation</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .coordi-image {
+            margin-right: 20px;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .product {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>추천 코디</h1>
+    {% for coordinate_list in coordinate_lists %}
+        <div class="container">
+            <div class="coordi-image">
+                <img src="{{ coordinate_list[0] }}" alt="코디 이미지" width="200">
+            </div>
+            <div class="products">
+                {% for product in coordinate_list[1] %}
+                    <div class="product">
+                        <img src="{{ product[0] }}" alt="제품 이미지" width="100"><br>
+                        가격: {{ product[1] }}<br>
+                        브랜드: {{ product[2] }}<br>
+                        <a href="{{ product[3] }}">제품 링크</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

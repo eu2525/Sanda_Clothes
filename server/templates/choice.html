@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Processed Image</title>
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        }
+
+        .image-container img {
+            max-width: 200px;
+            height: auto;
+            margin: 0 10px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>추천받고 싶은 상품을 선택해 주세요</h1>
+    </div>
+    <div class="image-container">
+        <div>
+            <h2>Upper Clothes</h2>
+            <img src="data:image/png;base64,{{ processed_upper_image }}" alt="Processed Upper Image" id="upperImage">
+        </div>
+        <div>
+            <h2>Pants</h2>
+            <img src="data:image/png;base64,{{ processed_pants_image }}" alt="Processed Pants Image" id="pantsImage">
+        </div>
+    </div>
+    <div class="btn-container">
+        <button onclick="selectImage('upper')">Select Upper Clothes</button>
+        <button onclick="selectImage('pants')">Select Pants</button>
+    </div>
+
+    <form id="imageForm" action="/recommend_product" method="post" style="display: none;">
+        <input type="hidden" id="selectedImage" name="selected_image">
+    </form>
+
+    <script>
+        function selectImage(imageType) {
+            var selectedImage;
+            if (imageType === 'upper') {
+                selectedImage = document.getElementById('upperImage').src;
+            } else if (imageType === 'pants') {
+                selectedImage = document.getElementById('pantsImage').src;
+            }
+
+            document.getElementById('selectedImage').value = selectedImage;
+            document.getElementById('imageForm').submit();
+        }
+    </script>
+</body>
+</html>
