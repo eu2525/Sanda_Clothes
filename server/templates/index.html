@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SandaClothes에 오신걸 환영합니다</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+    .header img {
+      margin-left: 20px;
+      height: 50px; /* 원하는 크기로 조정 */
+    }
+    .upload-container {
+      margin-top: 50px;
+    }
+    #image-preview-container {
+      display: none;
+      justify-content: center;
+      margin-top: 100px;
+    }
+    #image-preview {
+      max-width: 300px;
+      max-height: 300px;
+    }
+    #submit-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="/static/sandaclothes_logo.png" alt="로고">
+    <h1>SandaClothes에 오신걸 환영합니다</h1>
+    <img src="/static/sandaclothes_logo.png" alt="로고">
+  </div>
+  <p>추천 받고 싶은 이미지를 첨부하세요.</p>
+  <div class="upload-container">
+    <input type="file" id="file-input" accept="image/*">
+    <div id="image-preview-container">
+      <img id="image-preview" src="#" alt="이미지 미리보기">
+    </div>
+    <button id="submit-button">입력</button>
+  </div>
+
+  <script>
+    // 파일 선택 시 이미지 미리보기
+    document.getElementById('file-input').addEventListener('change', function(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        var imgElement = document.getElementById('image-preview');
+        var container = document.getElementById('image-preview-container');
+        imgElement.src = e.target.result;
+        container.style.display = 'flex';
+      }
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // 입력 버튼 클릭 시 처리
+    document.getElementById('submit-button').addEventListener('click', function() {
+      var fileInput = document.getElementById('file-input');
+      var file = fileInput.files[0];
+
+      // form 생성
+      var form = document.createElement('form');
+      form.setAttribute('method', 'post');
+      form.setAttribute('action', '/choice');
+      form.setAttribute('enctype', 'multipart/form-data');
+
+      // 이미지 파일 추가
+      var formData = new FormData();
+      formData.append('image', file);
+
+      // form에 이미지 파일 추가
+      var formDataInput = document.createElement('input');
+      formDataInput.setAttribute('type', 'file');
+      formDataInput.setAttribute('name', 'image');
+      formDataInput.files = fileInput.files;
+      form.appendChild(formDataInput);
+
+      // form 제출
+      document.body.appendChild(form);
+      form.submit();
+    });
+  </script>
+</body>
+</html>
