@@ -6,9 +6,9 @@
 
 ## 프로젝트 수행 과정
 <p align="center">
-  <img src="https://github.com/eu2525/Sanda_Clothes/assets/49024115/f07a394f-a400-4815-a6a6-11fa1c7dbb18" alt="Image 1" width="300">
-  <img src="https://github.com/eu2525/Sanda_Clothes/assets/49024115/31bce9b5-d558-4ec5-a745-c314d07c7cce" alt="Image 2" width="230">
-  <img src="https://github.com/eu2525/Sanda_Clothes/assets/49024115/a390f40f-f946-4402-afcc-7a332e6589c8" alt="Image 3" width="300">
+  <img src="https://github.com/eu2525/Sanda_Clothes/assets/49024115/f07a394f-a400-4815-a6a6-11fa1c7dbb18" alt="Image 1" width="250">
+  <img src="https://github.com/eu2525/Sanda_Clothes/assets/49024115/31bce9b5-d558-4ec5-a745-c314d07c7cce" alt="Image 2" width="180">
+  <img src="https://github.com/eu2525/Sanda_Clothes/assets/49024115/a390f40f-f946-4402-afcc-7a332e6589c8" alt="Image 3" width="250">
 </p>
 
 ## 프로젝트 결과
